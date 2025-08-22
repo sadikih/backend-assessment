@@ -10,11 +10,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # ✅ Add required environment for Django + DB here
+    # ✅ Correct indentation for env block
     env:
-      SECRET_KEY: "test_secret_key"     # <-- fixes your error
+      SECRET_KEY: "test_secret_key"
       DEBUG: "1"
-      DATABASE_URL: postgres://test_user:test_password@localhost:5432/test_db
+
+      # ✅ Add these so Django stops complaining
+      DB_NAME: "test_db"
+      DB_USER: "test_user"
+      DB_PASSWORD: "test_password"
+      DB_HOST: "localhost"
+      DB_PORT: "5432"
 
     services:
       postgres:
